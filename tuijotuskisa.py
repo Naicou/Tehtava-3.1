@@ -58,6 +58,16 @@ class Peikko:
 
 
 ### Kirjoita luokka Sankari tähän.
+class Sankari:
+    HURRAUS = ['jee', 'gee', 'helppoa', 'too easy', '2 ez m8']
+
+    def __init__(self, nimi):
+        self.nimi = nimi
+        self.rohkeus = random.randint(1, 100)
+        self.katseen_voima = random.randint(1, 100)
+
+    def arvo_hurraus(self):
+        return random.choice(self.HURRAUS)
 
 
 def hurraa(olio):
@@ -129,6 +139,10 @@ def taistele(vasen, oikea):
         return oikea
 
 
+
+
+
+
 sankari = Sankari(input("Mikä on sankarimme nimi? "))
 pelastetut = 0
 # Käydään tuijotuskisoja peikkoja vastaan, kunnes sankari karkaa
@@ -152,3 +166,5 @@ while sankari.rohkeus > 0:
 
 time.sleep(1.5)
 print(f"{sankari.nimi} herää sängystään hikisenä - onneksi se oli vain unta!")
+
+
