@@ -24,6 +24,7 @@ class Peikko:
         self.nimi = self._arvo_sanat(self.NIMITAVUT, 3, "-")
         self.rohkeus = random.randint(4, 8)
         self.katseen_voima = random.randint(2, 4)
+        self.tyyppi = random.choice(Peikko, Vuoripeikko, Luolapeikko)
 
     def _arvo_sanat(self, tavut, n, erotin, p=0.5):
         """Muodostaa satunnaisen tekstin annetuista tavuista.
@@ -63,13 +64,32 @@ class Sankari:
 
     def __init__(self, nimi):
         self.nimi = nimi
-        self.rohkeus = random.randint(1, 100)
-        self.katseen_voima = random.randint(1, 100)
+        self.rohkeus = random.randint(1, 10)
+        self.katseen_voima = random.randint(1, 10)
 
     def arvo_hurraus(self):
         return random.choice(self.HURRAUS)
 
+class Olento(Peikko, Sankari):
+    def __init__(self,nimi, tavut):
+        super().__init__(nimi, tavut)
 
+class Vuoripeikko(Peikko):
+    def __init__(self,  NIMITAVUT, RIEMUTAVUT):
+        super().__init__(NIMITAVUT, RIEMUTAVUT)
+        NIMITAVUT = ("VuoriPeikko hahahhaha", 'hahahhaha')
+        RIEMUTAVUT = ("VuoriPeikko hahahhaha", 'hahahhaha')
+
+
+
+class Luolapeikko(Peikko):
+     def __init__(self,  NIMITAVUT, RIEMUTAVUT, rohkeus, katseen_voima):
+        super().__init__(NIMITAVUT, RIEMUTAVUT, rohkeus, katseen_voima)
+        self.katseen_voima = random.randint(2, 3)
+        self.rohkeus = random.randint(4, 5)
+        NIMITAVUT = ("Luolapeikko hahahhaha", 'hahahhaha')
+        RIEMUTAVUT = ("Luolapeikko hahahhaha", 'hahahhaha')
+        
 def hurraa(olio):
     """Tulostaa satunnaisen hurrauksen annetulle oliolle.
 
